@@ -1,0 +1,52 @@
+/* questao03fisico: */
+
+CREATE TABLE prova (
+    id_teste integer PRIMARY KEY,
+    dataInicio date,
+    numerosQuestoes integer
+);
+
+CREATE TABLE questao (
+    id_questao integer PRIMARY KEY,
+    questao varchar(1000),
+    resposta varchar(100),
+    bimestre integer,
+    fk_Materia_id_materia integer
+);
+
+CREATE TABLE Materia (
+    id_materia integer PRIMARY KEY,
+    nomeMateria varchar(200),
+    anoSerie integer,
+    fk_disciplina_id_disciplina integer
+);
+
+CREATE TABLE disciplina (
+    id_disciplina integer PRIMARY KEY,
+    nomeDisciplina varchar(200)
+);
+
+CREATE TABLE possui (
+    fk_prova_id_teste integer,
+    fk_questao_id_questao integer
+);
+ 
+ALTER TABLE questao ADD CONSTRAINT FK_questao_2
+    FOREIGN KEY (fk_Materia_id_materia)
+    REFERENCES Materia (id_materia)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Materia ADD CONSTRAINT FK_Materia_2
+    FOREIGN KEY (fk_disciplina_id_disciplina)
+    REFERENCES disciplina (id_disciplina)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui ADD CONSTRAINT FK_possui_1
+    FOREIGN KEY (fk_prova_id_teste)
+    REFERENCES prova (id_teste)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui ADD CONSTRAINT FK_possui_2
+    FOREIGN KEY (fk_questao_id_questao)
+    REFERENCES questao (id_questao)
+    ON DELETE RESTRICT;

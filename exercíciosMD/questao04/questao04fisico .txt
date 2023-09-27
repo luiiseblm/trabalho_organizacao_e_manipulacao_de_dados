@@ -1,0 +1,16 @@
+/* questao04fisico: */
+
+CREATE TABLE cadastro (
+    id_cliente varchar(100) PRIMARY KEY,
+    telefone integer,
+    endereco varchar(100),
+    tema_festa varchar(100),
+    data date,
+    horario_comeco_fim integer
+);
+
+CREATE TABLE controle (
+    id_itens varchar(100),
+    cor_toalha integer,
+    aluguel_valor float
+);

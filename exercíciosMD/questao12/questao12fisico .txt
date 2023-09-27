@@ -1,0 +1,14 @@
+/* questao12fisico: */
+
+CREATE TABLE loterica (
+    id_jogo integer PRIMARY KEY,
+    quina integer,
+    megasena integer,
+    lotomania integer
+);
+
+CREATE TABLE resultado (
+    id_cartao integer PRIMARY KEY,
+    acertos integer,
+    resultadoConcurso integer
+);

@@ -1,0 +1,21 @@
+/* questao01L gico_1: */
+
+CREATE TABLE cadastro_tarefa (
+    id_n__prioridade integer PRIMARY KEY,
+    nome_tarefa varchar(100),
+    data_limite date,
+    percentual integer,
+    descricao varchar(100),
+    fk_execucao_tarefa_id_percentual_correspondente integer
+);
+
+CREATE TABLE execucao_tarefa (
+    id_percentual_correspondente integer PRIMARY KEY,
+    descricao_execucao varchar(100),
+    data_execucao date
+);
+ 
+ALTER TABLE cadastro_tarefa ADD CONSTRAINT FK_cadastro_tarefa_2
+    FOREIGN KEY (fk_execucao_tarefa_id_percentual_correspondente)
+    REFERENCES execucao_tarefa (id_percentual_correspondente)
+    ON DELETE CASCADE;

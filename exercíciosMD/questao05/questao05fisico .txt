@@ -1,0 +1,45 @@
+/* questao05fisico: */
+
+CREATE TABLE professores (
+    id_professor varchar(100) PRIMARY KEY,
+    contato varchar(100),
+    valor_hora_aula float,
+    data_comeco_fim date,
+    hora_comeco_fim date,
+    fk_curso_id_curso varchar(100)
+);
+
+CREATE TABLE curso (
+    id_curso varchar(100) PRIMARY KEY,
+    valores float,
+    carga_horaria integer,
+    conteudo varchar(100)
+);
+
+CREATE TABLE cadastro (
+    id_estudante varchar(100),
+    data_nascimento date,
+    endereco varchar(100),
+    contato integer
+);
+
+CREATE TABLE matricula (
+    id_aluno varchar(100) PRIMARY KEY,
+    data date,
+    turma varchar(100),
+    valor float
+);
+
+CREATE TABLE cadastro_matricula (
+    fk_matricula_id_aluno varchar(100)
+);
+ 
+ALTER TABLE professores ADD CONSTRAINT FK_professores_2
+    FOREIGN KEY (fk_curso_id_curso)
+    REFERENCES curso (id_curso)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE cadastro_matricula ADD CONSTRAINT FK_cadastro_matricula_1
+    FOREIGN KEY (fk_matricula_id_aluno)
+    REFERENCES matricula (id_aluno)
+    ON DELETE SET NULL;

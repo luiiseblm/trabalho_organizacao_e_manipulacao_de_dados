@@ -1,0 +1,29 @@
+/* questao08fisico: */
+
+CREATE TABLE status (
+    id_usuarioAprovado integer PRIMARY KEY,
+    naoIniciado varchar(100),
+    aprovadoUsuario varchar(100),
+    emDesenvolvimento varchar(100)
+);
+
+CREATE TABLE pacote (
+    idPasta integer PRIMARY KEY,
+    nomeDiretorio varchar(100),
+    nomeCaso varchar(100)
+);
+
+CREATE TABLE possui (
+    fk_status_id_usuarioAprovado integer,
+    fk_pacote_idPasta integer
+);
+ 
+ALTER TABLE possui ADD CONSTRAINT FK_possui_1
+    FOREIGN KEY (fk_status_id_usuarioAprovado)
+    REFERENCES status (id_usuarioAprovado)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui ADD CONSTRAINT FK_possui_2
+    FOREIGN KEY (fk_pacote_idPasta)
+    REFERENCES pacote (idPasta)
+    ON DELETE RESTRICT;

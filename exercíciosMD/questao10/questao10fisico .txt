@@ -1,0 +1,32 @@
+/* questao10fisico: */
+
+CREATE TABLE apt (
+    id_apt integer PRIMARY KEY,
+    quartos integer,
+    tipoOcupacao varchar(100),
+    proprietario varchar(100),
+    telefone integer,
+    fk_condominio_id_pagamento integer
+);
+
+CREATE TABLE condominio (
+    id_pagamento integer PRIMARY KEY,
+    valorPago float,
+    fk_gastos_id_mes integer
+);
+
+CREATE TABLE gastos (
+    id_mes integer PRIMARY KEY,
+    gastosGrupo float,
+    gastosEspecificos float
+);
+ 
+ALTER TABLE apt ADD CONSTRAINT FK_apt_2
+    FOREIGN KEY (fk_condominio_id_pagamento)
+    REFERENCES condominio (id_pagamento)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE condominio ADD CONSTRAINT FK_condominio_2
+    FOREIGN KEY (fk_gastos_id_mes)
+    REFERENCES gastos (id_mes)
+    ON DELETE RESTRICT;

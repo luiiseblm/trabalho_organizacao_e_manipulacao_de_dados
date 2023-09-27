@@ -1,0 +1,23 @@
+/* questao11fisico: */
+
+CREATE TABLE fichaCliente (
+    id_cliente integer PRIMARY KEY,
+    endereco varchar(100),
+    telefone integer,
+    email varchar(100),
+    dataNascimento date,
+    tipoPlano varchar(100),
+    data1consulta date
+);
+
+CREATE TABLE consulta (
+    idClienteNovo integer PRIMARY KEY,
+    telefone integer,
+    consultaRevisao varchar(100),
+    fk_fichaCliente_id_cliente integer
+);
+ 
+ALTER TABLE consulta ADD CONSTRAINT FK_consulta_2
+    FOREIGN KEY (fk_fichaCliente_id_cliente)
+    REFERENCES fichaCliente (id_cliente)
+    ON DELETE RESTRICT;

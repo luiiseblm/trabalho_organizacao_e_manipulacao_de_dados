@@ -1,0 +1,30 @@
+/* questao07fisico: */
+
+CREATE TABLE jogo (
+    id_palavras varchar(100) PRIMARY KEY,
+    pedacos_boneco integer
+);
+
+CREATE TABLE tema (
+    id_palavras varchar(100),
+    frases varchar(100),
+    fk_jogo_id_palavras varchar(100)
+);
+
+CREATE TABLE rodadas (
+    id_sorteio integer,
+    tema varchar(100)
+);
+
+CREATE TABLE jogador (
+    id_jogador varchar(100),
+    pontuacao integer
+);
+
+CREATE TABLE Relacionamento_2 (
+);
+ 
+ALTER TABLE tema ADD CONSTRAINT FK_tema_1
+    FOREIGN KEY (fk_jogo_id_palavras)
+    REFERENCES jogo (id_palavras)
+    ON DELETE RESTRICT;

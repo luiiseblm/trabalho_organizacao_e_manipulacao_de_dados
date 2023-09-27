@@ -1,0 +1,38 @@
+/* questao09fisico: */
+
+CREATE TABLE revista (
+    id_edicao integer PRIMARY KEY,
+    tipo_colecao varchar(100),
+    ano varchar(100)
+);
+
+CREATE TABLE caixa (
+    id_etiqueta integer PRIMARY KEY,
+    cor varchar(100),
+    numeracao integer,
+    fk_revista_id_edicao integer
+);
+
+CREATE TABLE cadastro (
+    idResponsavel integer PRIMARY KEY,
+    nomeAmigo varchar(100),
+    celular integer
+);
+
+CREATE TABLE emprestimo (
+    id_retirada integer PRIMARY KEY,
+    nomeRevista varchar(100),
+    dataEmprestimo date,
+    dataDevolucao date,
+    fk_cadastro_idResponsavel integer
+);
+ 
+ALTER TABLE caixa ADD CONSTRAINT FK_caixa_2
+    FOREIGN KEY (fk_revista_id_edicao)
+    REFERENCES revista (id_edicao)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_2
+    FOREIGN KEY (fk_cadastro_idResponsavel)
+    REFERENCES cadastro (idResponsavel)
+    ON DELETE RESTRICT;

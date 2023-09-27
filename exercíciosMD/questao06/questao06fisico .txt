@@ -1,0 +1,12 @@
+/* questao06fisico: */
+
+CREATE TABLE pagina_servicos (
+    id_anuncio varchar_100),
+    50_char varchar_100),
+    20_char varchar_100),
+    id_nome varchar_100),
+    valor_produto float,
+    titulo varchar_100),
+    contato varchar_100),
+    PRIMARY KEY (id_anuncio, id_nome)
+);
